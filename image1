@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aurora Image – Aurora Odds Index</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #030712;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: #e5f4ff;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .aurora-frame {
+    max-width: 850px;
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 12px;
+    backdrop-filter: blur(7px);
+
+    /* Soft aurora glow */
+    box-shadow:
+      0 0 45px rgba(80, 160, 255, 0.25),
+      0 0 65px rgba(0, 255, 190, 0.20),
+      0 0 95px rgba(88, 180, 255, 0.12);
+
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+  }
+
+  /* Hover effect */
+  .aurora-frame:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 0 55px rgba(120, 210, 255, 0.35),
+      0 0 85px rgba(0, 255, 200, 0.25),
+      0 0 120px rgba(90, 200, 255, 0.18);
+  }
+
+  .aurora-frame img {
+    width: 100%;
+    border-radius: 14px;
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="aurora-frame">
+  <img 
+    src="https://images.unsplash.com/photo-1551692554-d83872f34d55?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="Aurora Borealis lighting up the night sky."
+  />
+</div>
+
+</body>
+</html>
