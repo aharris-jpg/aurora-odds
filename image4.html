@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aurora Image – Soft Glow Frame</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 24px;
+    background: radial-gradient(circle at top, #02091e 0%, #020617 45%, #01030a 100%);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: #e5f4ff;
+    display: flex;
+    justify-content: center;
+  }
+
+  .aurora-frame {
+    max-width: 800px;
+    width: 100%;
+    border-radius: 22px;
+    padding: 14px;
+    background: linear-gradient(
+      145deg,
+      rgba(0, 255, 180, 0.14),
+      rgba(60, 200, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    );
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    box-shadow:
+      0 0 50px rgba(90, 200, 255, 0.20),
+      0 0 80px rgba(0, 255, 180, 0.14);
+    transition:
+      transform 0.6s ease,
+      box-shadow 0.6s ease,
+      border-color 0.6s ease;
+  }
+
+  .aurora-frame img {
+    width: 100%;
+    border-radius: 16px;
+    display: block;
+    transition: transform 0.8s ease;
+  }
+
+  .aurora-frame:hover {
+    transform: translateY(-6px);
+    border-color: rgba(173, 252, 234, 0.7);
+    box-shadow:
+      0 0 70px rgba(90, 200, 255, 0.30),
+      0 0 110px rgba(0, 255, 180, 0.22),
+      0 0 40px rgba(255,255,255,0.10);
+  }
+
+  .aurora-frame:hover img {
+    transform: scale(1.02);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora-frame,
+    .aurora-frame img {
+      transition: none !important;
+    }
+    .aurora-frame:hover {
+      transform: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="aurora-frame">
+  <img 
+    src="https://images.unsplash.com/photo-1628818144466-856f7d477125?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0"
+    alt="Aurora Borealis over a snow covered forest at night."
+  />
+</div>
+</body>
+</html>
