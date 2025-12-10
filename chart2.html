@@ -1,0 +1,757 @@
+<section class="csb-aurora-data" role="region" aria-labelledby="aurora-data-title"
+  style="max-width:960px;width:100%;margin:32px auto 24px;
+         font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         color:#E5F4FF;border-radius:16px;
+         border:1px solid #1F2933;
+         box-shadow:0 1px 3px rgba(0,0,0,.45),0 14px 40px rgba(15,118,110,.55);
+         background:#020617;">
+
+  <style>
+    /* ===== Aurora full-data table (scoped) ============================ */
+    section.csb-aurora-data,
+    section.csb-aurora-data * {
+      box-sizing:border-box;
+      font-family:inherit;
+      color:inherit;
+    }
+    section.csb-aurora-data { color-scheme:dark; }
+
+    .csb-aurora-data {
+      --aurora-deep:#020617;
+      --aurora-border:#1F2933;
+      --aurora-soft:#E5F4FF;
+      --aurora-muted:#9CA3AF;
+      --aurora-header:#0B1020;
+      --aurora-row:#02091A;
+      --aurora-row-alt:#050F25;
+      --aurora-highlight:#38BDF8;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(56,189,248,.18),transparent 60%),
+        radial-gradient(circle at 100% 120%,rgba(16,185,129,.20),transparent 60%),
+        #020617;
+    }
+    .csb-aurora-data::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:18px;
+      padding:1px;
+      background:linear-gradient(135deg,rgba(56,189,248,.6),rgba(16,185,129,.35),rgba(109,40,217,.6));
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    .csb-aurora-data .head{
+      padding:14px 16px 10px;
+      border-bottom:1px solid rgba(15,23,42,.9)!important;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(56,189,248,.22),transparent 55%),
+        radial-gradient(circle at 100% 0%,rgba(16,185,129,.30),transparent 55%),
+        #020617;
+    }
+    .csb-aurora-data h2{
+      margin:0 0 4px;
+      font-size:clamp(16px,2.2vw,19px);
+      font-weight:800;
+      letter-spacing:.02em;
+      color:#F9FAFB;
+    }
+    .csb-aurora-data .lead{
+      margin:0;
+      font-size:12px;
+      color:var(--aurora-muted);
+    }
+
+    .csb-aurora-data .wrap{
+      padding:10px 12px 14px;
+    }
+    .csb-aurora-data .note{
+      margin:0 0 8px;
+      font-size:11px;
+      color:var(--aurora-muted);
+    }
+
+    .csb-aurora-data .scroll{
+      border-radius:12px;
+      border:1px solid var(--aurora-border);
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
+      background:#020617;
+      max-height:min(70vh,620px);
+    }
+    .csb-aurora-data .scroll::-webkit-scrollbar{width:8px;height:8px;}
+    .csb-aurora-data .scroll::-webkit-scrollbar-track{background:#020617;border-radius:999px;}
+    .csb-aurora-data .scroll::-webkit-scrollbar-thumb{
+      background:linear-gradient(180deg,#38BDF8,#10B981);
+      border-radius:999px;
+      border:2px solid #020617;
+    }
+
+    .csb-aurora-data table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:720px;
+      font-size:12px;
+    }
+    .csb-aurora-data thead{
+      position:sticky;
+      top:0;
+      z-index:1;
+      background:linear-gradient(180deg,#020617,#020617,#020617);
+      box-shadow:0 6px 10px rgba(15,23,42,.95);
+    }
+    .csb-aurora-data th,
+    .csb-aurora-data td{
+      padding:7px 10px;
+      text-align:left;
+      border-bottom:1px solid rgba(15,23,42,.85);
+      white-space:nowrap;
+    }
+    .csb-aurora-data th{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:var(--aurora-muted);
+      background:#020617;
+    }
+    .csb-aurora-data tbody tr:nth-child(odd){
+      background:var(--aurora-row);
+    }
+    .csb-aurora-data tbody tr:nth-child(even){
+      background:var(--aurora-row-alt);
+    }
+    .csb-aurora-data tbody tr:hover{
+      background:radial-gradient(circle at 0 0,rgba(56,189,248,.18),transparent 60%),#020617;
+    }
+
+    .csb-aurora-data .col-rank,
+    .csb-aurora-data .col-score,
+    .csb-aurora-data .col-chance{
+      font-variant-numeric:tabular-nums;
+    }
+    .csb-aurora-data .col-rank{
+      text-align:center;
+      width:46px;
+      color:#E5F4FF;
+      font-weight:600;
+    }
+    .csb-aurora-data .col-state{
+      font-weight:600;
+      color:var(--aurora-soft);
+    }
+    .csb-aurora-data .col-capital{
+      color:var(--aurora-muted);
+    }
+    .csb-aurora-data .col-chance{
+      color:#BBF7D0;
+      font-weight:600;
+    }
+    .csb-aurora-data .col-score{
+      color:#BFDBFE;
+    }
+
+    @media (max-width:640px){
+      .csb-aurora-data .head{padding:12px 12px 8px;}
+      .csb-aurora-data .wrap{padding:8px 8px 12px;}
+    }
+  </style>
+
+  <header class="head">
+    <h2 id="aurora-data-title">Full Aurora Odds Index Data &mdash; All 50 States</h2>
+    <p class="lead">
+      Every state&rsquo;s Aurora Viewing Chance (%) alongside the underlying metrics used in the index.
+    </p>
+  </header>
+
+  <div class="wrap">
+    <p class="note">
+      <strong>Aurora Viewing Chance (%)</strong> is the same value used throughout the study (mathematically equivalent to implied probability), expressed in clear percentage form. Higher values indicate more favorable long-term conditions for aurora visibility.
+    </p>
+
+    <div class="scroll" role="group" aria-label="Aurora Odds Index full data table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="col-rank">Rank</th>
+            <th scope="col">State</th>
+            <th scope="col">Capital</th>
+            <th scope="col" class="col-chance">Aurora Viewing Chance (%)</th>
+            <th scope="col" class="col-score">Final Score (0&ndash;100)</th>
+            <th scope="col">Aurora Reach Score</th>
+            <th scope="col">Clear Days / Year</th>
+            <th scope="col">Darkness Score</th>
+            <th scope="col">Avg Humidity (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1–10 -->
+          <tr>
+            <td class="col-rank">1</td>
+            <td class="col-state">Arizona</td>
+            <td class="col-capital">Phoenix</td>
+            <td class="col-chance">60.00</td>
+            <td class="col-score">67.97</td>
+            <td>31.88</td>
+            <td>193</td>
+            <td>75</td>
+            <td>38.5</td>
+          </tr>
+          <tr>
+            <td class="col-rank">2</td>
+            <td class="col-state">Nevada</td>
+            <td class="col-capital">Carson City</td>
+            <td class="col-chance">59.42</td>
+            <td class="col-score">67.26</td>
+            <td>46.71</td>
+            <td>158</td>
+            <td>74</td>
+            <td>38.3</td>
+          </tr>
+          <tr>
+            <td class="col-rank">3</td>
+            <td class="col-state">New Mexico</td>
+            <td class="col-capital">Santa Fe</td>
+            <td class="col-chance">56.91</td>
+            <td class="col-score">64.22</td>
+            <td>37.58</td>
+            <td>167</td>
+            <td>82</td>
+            <td>45.9</td>
+          </tr>
+          <tr>
+            <td class="col-rank">4</td>
+            <td class="col-state">Alaska</td>
+            <td class="col-capital">Juneau</td>
+            <td class="col-chance">55.64</td>
+            <td class="col-score">62.68</td>
+            <td>100</td>
+            <td>61</td>
+            <td>95</td>
+            <td>71.6</td>
+          </tr>
+          <tr>
+            <td class="col-rank">5</td>
+            <td class="col-state">Utah</td>
+            <td class="col-capital">Salt Lake City</td>
+            <td class="col-chance">52.58</td>
+            <td class="col-score">58.98</td>
+            <td>50.71</td>
+            <td>125</td>
+            <td>80</td>
+            <td>51.7</td>
+          </tr>
+          <tr>
+            <td class="col-rank">6</td>
+            <td class="col-state">Idaho</td>
+            <td class="col-capital">Boise</td>
+            <td class="col-chance">51.84</td>
+            <td class="col-score">58.08</td>
+            <td>58.77</td>
+            <td>120</td>
+            <td>84</td>
+            <td>62.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">7</td>
+            <td class="col-state">Colorado</td>
+            <td class="col-capital">Denver</td>
+            <td class="col-chance">51.11</td>
+            <td class="col-score">57.20</td>
+            <td>48.18</td>
+            <td>136</td>
+            <td>72</td>
+            <td>54.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">8</td>
+            <td class="col-state">Wyoming</td>
+            <td class="col-capital">Cheyenne</td>
+            <td class="col-chance">50.79</td>
+            <td class="col-score">56.81</td>
+            <td>52.06</td>
+            <td>114</td>
+            <td>86</td>
+            <td>57.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">9</td>
+            <td class="col-state">Montana</td>
+            <td class="col-capital">Helena</td>
+            <td class="col-chance">49.83</td>
+            <td class="col-score">55.65</td>
+            <td>66.00</td>
+            <td>82</td>
+            <td>88</td>
+            <td>60.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">10</td>
+            <td class="col-state">South Dakota</td>
+            <td class="col-capital">Pierre</td>
+            <td class="col-chance">47.41</td>
+            <td class="col-score">52.72</td>
+            <td>60.16</td>
+            <td>104</td>
+            <td>78</td>
+            <td>66.4</td>
+          </tr>
+
+          <!-- 11–20 -->
+          <tr>
+            <td class="col-rank">11</td>
+            <td class="col-state">North Dakota</td>
+            <td class="col-capital">Bismarck</td>
+            <td class="col-chance">46.41</td>
+            <td class="col-score">51.51</td>
+            <td>66.57</td>
+            <td>93</td>
+            <td>78</td>
+            <td>70.9</td>
+          </tr>
+          <tr>
+            <td class="col-rank">12</td>
+            <td class="col-state">Maine</td>
+            <td class="col-capital">Augusta</td>
+            <td class="col-chance">43.42</td>
+            <td class="col-score">47.88</td>
+            <td>60.46</td>
+            <td>101</td>
+            <td>68</td>
+            <td>71.7</td>
+          </tr>
+          <tr>
+            <td class="col-rank">13</td>
+            <td class="col-state">Nebraska</td>
+            <td class="col-capital">Lincoln</td>
+            <td class="col-chance">43.41</td>
+            <td class="col-score">47.87</td>
+            <td>50.85</td>
+            <td>117</td>
+            <td>62</td>
+            <td>65.8</td>
+          </tr>
+          <tr>
+            <td class="col-rank">14</td>
+            <td class="col-state">Kansas</td>
+            <td class="col-capital">Topeka</td>
+            <td class="col-chance">43.26</td>
+            <td class="col-score">47.69</td>
+            <td>46.38</td>
+            <td>128</td>
+            <td>60</td>
+            <td>65.7</td>
+          </tr>
+          <tr>
+            <td class="col-rank">15</td>
+            <td class="col-state">Minnesota</td>
+            <td class="col-capital">Saint Paul</td>
+            <td class="col-chance">41.51</td>
+            <td class="col-score">45.57</td>
+            <td>62.09</td>
+            <td>95</td>
+            <td>58</td>
+            <td>70.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">16</td>
+            <td class="col-state">Oklahoma</td>
+            <td class="col-capital">Oklahoma City</td>
+            <td class="col-chance">40.45</td>
+            <td class="col-score">44.28</td>
+            <td>37.02</td>
+            <td>139</td>
+            <td>50</td>
+            <td>64.0</td>
+          </tr>
+          <tr>
+            <td class="col-rank">17</td>
+            <td class="col-state">New Hampshire</td>
+            <td class="col-capital">Concord</td>
+            <td class="col-chance">40.41</td>
+            <td class="col-score">44.23</td>
+            <td>58.11</td>
+            <td>90</td>
+            <td>63</td>
+            <td>70.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">18</td>
+            <td class="col-state">Oregon</td>
+            <td class="col-capital">Salem</td>
+            <td class="col-chance">40.04</td>
+            <td class="col-score">43.79</td>
+            <td>61.34</td>
+            <td>68</td>
+            <td>70</td>
+            <td>68.6</td>
+          </tr>
+          <tr>
+            <td class="col-rank">19</td>
+            <td class="col-state">Iowa</td>
+            <td class="col-capital">Des Moines</td>
+            <td class="col-chance">38.95</td>
+            <td class="col-score">42.47</td>
+            <td>52.82</td>
+            <td>105</td>
+            <td>56</td>
+            <td>72.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">20</td>
+            <td class="col-state">Missouri</td>
+            <td class="col-capital">Jefferson City</td>
+            <td class="col-chance">38.59</td>
+            <td class="col-score">42.03</td>
+            <td>45.16</td>
+            <td>115</td>
+            <td>54</td>
+            <td>69.2</td>
+          </tr>
+
+          <!-- 21–30 -->
+          <tr>
+            <td class="col-rank">21</td>
+            <td class="col-state">California</td>
+            <td class="col-capital">Sacramento</td>
+            <td class="col-chance">38.17</td>
+            <td class="col-score">41.53</td>
+            <td>45.16</td>
+            <td>146</td>
+            <td>14</td>
+            <td>61.0</td>
+          </tr>
+          <tr>
+            <td class="col-rank">22</td>
+            <td class="col-state">Wisconsin</td>
+            <td class="col-capital">Madison</td>
+            <td class="col-chance">37.93</td>
+            <td class="col-score">41.23</td>
+            <td>56.93</td>
+            <td>89</td>
+            <td>55</td>
+            <td>71.6</td>
+          </tr>
+          <tr>
+            <td class="col-rank">23</td>
+            <td class="col-state">Vermont</td>
+            <td class="col-capital">Montpelier</td>
+            <td class="col-chance">36.41</td>
+            <td class="col-score">39.40</td>
+            <td>60.33</td>
+            <td>58</td>
+            <td>66</td>
+            <td>71.7</td>
+          </tr>
+          <tr>
+            <td class="col-rank">24</td>
+            <td class="col-state">Arkansas</td>
+            <td class="col-capital">Little Rock</td>
+            <td class="col-chance">35.69</td>
+            <td class="col-score">38.51</td>
+            <td>35.49</td>
+            <td>123</td>
+            <td>52</td>
+            <td>70.9</td>
+          </tr>
+          <tr>
+            <td class="col-rank">25</td>
+            <td class="col-state">Washington</td>
+            <td class="col-capital">Olympia</td>
+            <td class="col-chance">35.16</td>
+            <td class="col-score">37.87</td>
+            <td>66.82</td>
+            <td>58</td>
+            <td>48</td>
+            <td>71.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">26</td>
+            <td class="col-state">Texas</td>
+            <td class="col-capital">Austin</td>
+            <td class="col-chance">34.23</td>
+            <td class="col-score">36.74</td>
+            <td>23.83</td>
+            <td>135</td>
+            <td>45</td>
+            <td>64.9</td>
+          </tr>
+          <tr>
+            <td class="col-rank">27</td>
+            <td class="col-state">Kentucky</td>
+            <td class="col-capital">Frankfort</td>
+            <td class="col-chance">33.77</td>
+            <td class="col-score">36.19</td>
+            <td>44.18</td>
+            <td>93</td>
+            <td>50</td>
+            <td>70.3</td>
+          </tr>
+          <tr>
+            <td class="col-rank">28</td>
+            <td class="col-state">Michigan</td>
+            <td class="col-capital">Lansing</td>
+            <td class="col-chance">32.97</td>
+            <td class="col-score">35.23</td>
+            <td>56.04</td>
+            <td>71</td>
+            <td>46</td>
+            <td>72.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">29</td>
+            <td class="col-state">Tennessee</td>
+            <td class="col-capital">Nashville</td>
+            <td class="col-chance">32.52</td>
+            <td class="col-score">34.68</td>
+            <td>38.89</td>
+            <td>102</td>
+            <td>44</td>
+            <td>69.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">30</td>
+            <td class="col-state">Virginia</td>
+            <td class="col-capital">Richmond</td>
+            <td class="col-chance">32.50</td>
+            <td class="col-score">34.66</td>
+            <td>42.61</td>
+            <td>100</td>
+            <td>38</td>
+            <td>68.7</td>
+          </tr>
+
+          <!-- 31–40 -->
+          <tr>
+            <td class="col-rank">31</td>
+            <td class="col-state">Pennsylvania</td>
+            <td class="col-capital">Harrisburg</td>
+            <td class="col-chance">32.15</td>
+            <td class="col-score">34.23</td>
+            <td>49.60</td>
+            <td>87</td>
+            <td>36</td>
+            <td>69.6</td>
+          </tr>
+          <tr>
+            <td class="col-rank">32</td>
+            <td class="col-state">South Carolina</td>
+            <td class="col-capital">Columbia</td>
+            <td class="col-chance">32.06</td>
+            <td class="col-score">34.12</td>
+            <td>33.53</td>
+            <td>115</td>
+            <td>40</td>
+            <td>69.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">33</td>
+            <td class="col-state">North Carolina</td>
+            <td class="col-capital">Raleigh</td>
+            <td class="col-chance">31.70</td>
+            <td class="col-score">33.68</td>
+            <td>37.84</td>
+            <td>109</td>
+            <td>38</td>
+            <td>70.6</td>
+          </tr>
+          <tr>
+            <td class="col-rank">34</td>
+            <td class="col-state">Massachusetts</td>
+            <td class="col-capital">Boston</td>
+            <td class="col-chance">31.67</td>
+            <td class="col-score">33.65</td>
+            <td>55.09</td>
+            <td>98</td>
+            <td>18</td>
+            <td>71.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">35</td>
+            <td class="col-state">West Virginia</td>
+            <td class="col-capital">Charleston</td>
+            <td class="col-chance">31.43</td>
+            <td class="col-score">33.36</td>
+            <td>43.55</td>
+            <td>60</td>
+            <td>64</td>
+            <td>69.7</td>
+          </tr>
+          <tr>
+            <td class="col-rank">36</td>
+            <td class="col-state">Maryland</td>
+            <td class="col-capital">Annapolis</td>
+            <td class="col-chance">31.31</td>
+            <td class="col-score">33.21</td>
+            <td>46.19</td>
+            <td>105</td>
+            <td>22</td>
+            <td>68.8</td>
+          </tr>
+          <tr>
+            <td class="col-rank">37</td>
+            <td class="col-state">Rhode Island</td>
+            <td class="col-capital">Providence</td>
+            <td class="col-chance">30.64</td>
+            <td class="col-score">32.40</td>
+            <td>53.45</td>
+            <td>98</td>
+            <td>16</td>
+            <td>71.4</td>
+          </tr>
+          <tr>
+            <td class="col-rank">38</td>
+            <td class="col-state">Indiana</td>
+            <td class="col-capital">Indianapolis</td>
+            <td class="col-chance">29.96</td>
+            <td class="col-score">31.57</td>
+            <td>48.35</td>
+            <td>88</td>
+            <td>30</td>
+            <td>72.0</td>
+          </tr>
+          <tr>
+            <td class="col-rank">39</td>
+            <td class="col-state">Connecticut</td>
+            <td class="col-capital">Hartford</td>
+            <td class="col-chance">29.63</td>
+            <td class="col-score">31.17</td>
+            <td>53.30</td>
+            <td>82</td>
+            <td>20</td>
+            <td>69.2</td>
+          </tr>
+          <tr>
+            <td class="col-rank">40</td>
+            <td class="col-state">New York</td>
+            <td class="col-capital">Albany</td>
+            <td class="col-chance">29.41</td>
+            <td class="col-score">30.91</td>
+            <td>55.84</td>
+            <td>63</td>
+            <td>32</td>
+            <td>70.7</td>
+          </tr>
+
+          <!-- 41–50 -->
+          <tr>
+            <td class="col-rank">41</td>
+            <td class="col-state">Georgia</td>
+            <td class="col-capital">Atlanta</td>
+            <td class="col-chance">29.19</td>
+            <td class="col-score">30.64</td>
+            <td>32.86</td>
+            <td>112</td>
+            <td>32</td>
+            <td>71.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">42</td>
+            <td class="col-state">New Jersey</td>
+            <td class="col-capital">Trenton</td>
+            <td class="col-chance">28.86</td>
+            <td class="col-score">30.25</td>
+            <td>49.46</td>
+            <td>94</td>
+            <td>12</td>
+            <td>68.5</td>
+          </tr>
+          <tr>
+            <td class="col-rank">43</td>
+            <td class="col-state">Ohio</td>
+            <td class="col-capital">Columbus</td>
+            <td class="col-chance">28.62</td>
+            <td class="col-score">29.95</td>
+            <td>48.86</td>
+            <td>72</td>
+            <td>34</td>
+            <td>71.5</td>
+          </tr>
+          <tr>
+            <td class="col-rank">44</td>
+            <td class="col-state">Illinois</td>
+            <td class="col-capital">Springfield</td>
+            <td class="col-chance">28.30</td>
+            <td class="col-score">29.56</td>
+            <td>48.43</td>
+            <td>95</td>
+            <td>14</td>
+            <td>70.9</td>
+          </tr>
+          <tr>
+            <td class="col-rank">45</td>
+            <td class="col-state">Delaware</td>
+            <td class="col-capital">Dover</td>
+            <td class="col-chance">28.22</td>
+            <td class="col-score">29.46</td>
+            <td>46.67</td>
+            <td>97</td>
+            <td>15</td>
+            <td>70.9</td>
+          </tr>
+          <tr>
+            <td class="col-rank">46</td>
+            <td class="col-state">Mississippi</td>
+            <td class="col-capital">Jackson</td>
+            <td class="col-chance">26.39</td>
+            <td class="col-score">27.26</td>
+            <td>29.63</td>
+            <td>111</td>
+            <td>28</td>
+            <td>73.6</td>
+          </tr>
+          <tr>
+            <td class="col-rank">47</td>
+            <td class="col-state">Alabama</td>
+            <td class="col-capital">Montgomery</td>
+            <td class="col-chance">23.50</td>
+            <td class="col-score">23.75</td>
+            <td>29.80</td>
+            <td>99</td>
+            <td>28</td>
+            <td>77.1</td>
+          </tr>
+          <tr>
+            <td class="col-rank">48</td>
+            <td class="col-state">Louisiana</td>
+            <td class="col-capital">Baton Rouge</td>
+            <td class="col-chance">22.61</td>
+            <td class="col-score">22.67</td>
+            <td>24.36</td>
+            <td>101</td>
+            <td>26</td>
+            <td>74.0</td>
+          </tr>
+          <tr>
+            <td class="col-rank">49</td>
+            <td class="col-state">Florida</td>
+            <td class="col-capital">Tallahassee</td>
+            <td class="col-chance">19.31</td>
+            <td class="col-score">18.68</td>
+            <td>24.27</td>
+            <td>101</td>
+            <td>10</td>
+            <td>74.5</td>
+          </tr>
+          <tr>
+            <td class="col-rank">50</td>
+            <td class="col-state">Hawaii</td>
+            <td class="col-capital">Honolulu</td>
+            <td class="col-chance">10.00</td>
+            <td class="col-score">7.39</td>
+            <td>0.00</td>
+            <td>90</td>
+            <td>10</td>
+            <td>73.3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
