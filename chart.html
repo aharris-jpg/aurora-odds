@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aurora Odds Index — Best U.S. States to See the Northern Lights</title>
+</head>
+
+<body style="margin:0;">
+
+<section class="csb-aurora-embed" role="region" aria-labelledby="csb-aurora-title"
+  style="max-width:860px;width:100%;margin:16px auto;font:14px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         color:#E5F4FF;border:1px solid #1F2933;border-radius:16px;
+         box-shadow:0 1px 3px rgba(0,0,0,.45),0 14px 40px rgba(15,118,110,.55);">
+
+  <style>
+    /* ==== Scoped styles for the Aurora table ========================= */
+    section.csb-aurora-embed,
+    section.csb-aurora-embed * {
+      box-sizing: border-box;
+      font-family: inherit;
+      color: inherit;
+    }
+    section.csb-aurora-embed { color-scheme: dark; }
+
+    .csb-aurora-embed {
+      --aurora-deep:#020617;
+      --aurora-sky:#020617;
+      --aurora-purple:#6D28D9;
+      --aurora-green:#10B981;
+      --aurora-teal:#0EA5E9;
+      --aurora-soft:#E5F4FF;
+      --aurora-muted:#9CA3AF;
+      --aurora-border:#1F2933;
+      --aurora-row:#02091A;
+      --aurora-row-alt:#050F25;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 15% -20%, rgba(56,189,248,.18), transparent 60%),
+        radial-gradient(circle at 85% 120%, rgba(16,185,129,.20), transparent 65%),
+        radial-gradient(circle at -10% 115%, rgba(109,40,217,.25), transparent 65%),
+        #020617;
+    }
+
+    /* Glowing frame */
+    .csb-aurora-embed::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:18px;
+      padding:1px;
+      background:linear-gradient(135deg,rgba(56,189,248,.7),rgba(16,185,129,.4),rgba(109,40,217,.7));
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      opacity:.38;
+      pointer-events:none;
+    }
+
+    .csb-aurora-embed .head{
+      padding:14px 16px;
+      border-bottom:1px solid rgba(15,23,42,.9)!important;
+      color:#fff!important;
+      background:
+        radial-gradient(160% 200% at 0% 0%, rgba(16,185,129,.32) 0%, transparent 55%),
+        radial-gradient(160% 200% at 100% 0%, rgba(56,189,248,.32) 0%, transparent 55%),
+        linear-gradient(135deg,#020617 0%,#020617 25%,#111827 40%,#4C1D95 72%,#0F766E 100%)!important;
+      position:relative;
+      overflow:hidden;
+    }
+    .csb-aurora-embed .head::after{
+      content:"✦";
+      position:absolute;
+      right:22px;
+      top:10px;
+      font-size:26px;
+      color:rgba(209,250,229,.95);
+      text-shadow:0 0 14px rgba(16,185,129,.9);
+    }
+
+    .csb-aurora-embed .title{
+      margin:0 0 4px;
+      font-size:clamp(16px,2.2vw,20px);
+      line-height:1.2;
+      font-weight:800;
+      letter-spacing:0.02em;
+      color:#fff!important;
+    }
+    .csb-aurora-embed .sub{
+      margin:0;
+      color:rgba(226,232,240,.94)!important;
+      font-size:12px;
+    }
+    .csb-aurora-embed .meta{
+      margin:4px 0 0;
+      color:rgba(148,163,184,.96)!important;
+      font-size:11px;
+    }
+
+    .csb-aurora-embed .table{
+      padding:10px 12px;
+      max-height:min(72vh,640px);
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-gutter:stable;
+      background:
+        radial-gradient(circle at 50% -30%,rgba(56,189,248,.18),transparent 55%),
+        radial-gradient(circle at 0% 130%,rgba(16,185,129,.20),transparent 55%),
+        var(--aurora-sky);
+    }
+    .csb-aurora-embed .table::-webkit-scrollbar{ width:8px; height:8px }
+    .csb-aurora-embed .table::-webkit-scrollbar-track{ background:#020617; border-radius:999px }
+    .csb-aurora-embed .table::-webkit-scrollbar-thumb{
+      background:linear-gradient(180deg,var(--aurora-teal),var(--aurora-purple));
+      border-radius:999px;border:2px solid #020617;
+    }
+
+    .csb-aurora-embed .row{
+      display:grid;
+      grid-template-columns:40px minmax(0,1.2fr) minmax(0,0.9fr);
+      gap:8px;
+      align-items:center;
+      margin:4px 0;
+      padding:8px 10px;
+      border-radius:10px;
+      background:linear-gradient(135deg,rgba(15,23,42,.85),rgba(2,6,23,.98));
+      border:1px solid rgba(15,23,42,.9);
+    }
+    .csb-aurora-embed .row:nth-child(even){
+      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(3,7,18,.98));
+    }
+
+    .csb-aurora-embed .row--head{
+      position:sticky;
+      top:0;
+      z-index:1;
+      background:#020617;
+      border:0;
+      margin:0 0 6px;
+      padding:8px 10px;
+      box-shadow:0 6px 12px rgba(15,23,42,.7);
+    }
+
+    /* Hover / focus state for data rows */
+    .csb-aurora-embed .row--data:hover,
+    .csb-aurora-embed .row--data:focus-within{
+      border-color:var(--aurora-teal);
+      box-shadow:0 0 0 1px rgba(56,189,248,.45),0 0 24px rgba(37,99,235,.45);
+      background:
+        radial-gradient(circle at 0% 0%,rgba(56,189,248,.20),transparent 55%),
+        radial-gradient(circle at 100% 100%,rgba(16,185,129,.22),transparent 55%),
+        #020617;
+      outline:0;
+    }
+
+    .csb-aurora-embed .cell{
+      min-width:0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      font-size:12px;
+      color:var(--aurora-soft);
+    }
+
+    .csb-aurora-embed .cell-rank{
+      text-align:center;
+      font-variant-numeric:tabular-nums;
+      font-weight:600;
+      color:#D1FAE5;
+    }
+
+    .csb-aurora-embed .cell-head{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--aurora-muted);
+    }
+
+    .csb-aurora-embed .state-main{
+      font-weight:600;
+      font-size:13px;
+      color:#E5F4FF;
+    }
+    .csb-aurora-embed .state-meta{
+      display:block;
+      font-size:11px;
+      color:var(--aurora-muted);
+      margin-top:2px;
+    }
+
+    .csb-aurora-embed .chance{
+      font-variant-numeric:tabular-nums;
+      font-weight:600;
+      font-size:13px;
+      color:#BBF7D0;
+      margin-bottom:2px;
+    }
+    .csb-aurora-embed .pill-wrap{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .csb-aurora-embed .pill-bar{
+      position:relative;
+      flex:1;
+      height:6px;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      overflow:hidden;
+    }
+    .csb-aurora-embed .pill-bar span{
+      position:absolute;
+      inset:0;
+      transform-origin:left center;
+      background:linear-gradient(90deg,var(--aurora-green),var(--aurora-teal),var(--aurora-purple));
+    }
+
+    .csb-aurora-embed .pill-label{
+      font-size:10px;
+      color:var(--aurora-muted);
+      white-space:nowrap;
+    }
+
+    .csb-aurora-embed .foot{
+      padding:10px 16px 12px;
+      border-top:1px solid var(--aurora-border)!important;
+      background:radial-gradient(circle at 50% -40%,rgba(56,189,248,.16),transparent 55%),#020617;
+      font-size:11px;
+      color:var(--aurora-muted);
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px 16px;
+      justify-content:space-between;
+    }
+    .csb-aurora-embed .foot strong{ color:#E5F4FF; }
+
+    .csb-aurora-embed .brand-block{
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(56,189,248,.22),transparent 65%),
+        radial-gradient(circle at 90% 120%,rgba(16,185,129,.30),transparent 70%),
+        rgba(15,23,42,.95);
+      border:1px solid rgba(56,189,248,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .csb-aurora-embed .brand-block::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at 20% -10%,rgba(56,189,248,.35),transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    .csb-aurora-embed .brand-logo{
+      position:relative;
+      flex:0 0 auto;
+      width:70px;
+      height:auto;
+    }
+    .csb-aurora-embed .brand-logo img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:6px;
+      box-shadow:0 0 18px rgba(56,189,248,.55);
+      background:#020617;
+    }
+    .csb-aurora-embed .brand-text{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .csb-aurora-embed .brand-text-title{
+      font-size:11px;
+      font-weight:600;
+      color:#E5F4FF;
+    }
+    .csb-aurora-embed .brand-text-sub{
+      font-size:10px;
+      color:#C7D2FE;
+    }
+
+    .csb-aurora-embed .embed-tools{
+      flex:1 1 230px;
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      align-items:flex-end;
+    }
+
+    .csb-aurora-embed .embed-btn{
+      -webkit-appearance:none;
+      appearance:none;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:linear-gradient(135deg,#111827,#020617);
+      padding:6px 10px;
+      font-size:11px;
+      color:#E5F4FF;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .csb-aurora-embed .embed-btn:hover{
+      border-color:var(--aurora-teal);
+      box-shadow:0 0 0 1px rgba(56,189,248,.4);
+    }
+    .csb-aurora-embed .embed-btn:focus-visible{
+      outline:2px solid var(--aurora-teal);
+      outline-offset:2px;
+    }
+
+    .csb-aurora-embed .embed-btn-icon{
+      font-size:13px;
+      line-height:1;
+    }
+
+    .csb-aurora-embed .embed-wrap{
+      width:100%;
+      max-width:360px;
+    }
+
+    .csb-aurora-embed .embed-label{
+      font-size:10px;
+      margin-bottom:2px;
+      color:var(--aurora-muted);
+      text-align:right;
+    }
+
+    .csb-aurora-embed .embed-code{
+      width:100%;
+      min-height:72px;
+      max-height:110px;
+      padding:6px 8px;
+      border-radius:8px;
+      border:1px solid var(--aurora-border);
+      background:#020617;
+      color:var(--aurora-soft);
+      font-family:Menlo,Consolas,ui-monospace,monospace;
+      font-size:11px;
+      resize:vertical;
+    }
+
+    .csb-aurora-embed .embed-status{
+      font-size:10px;
+      color:var(--aurora-muted);
+      margin-top:2px;
+      text-align:right;
+    }
+
+    .csb-aurora-embed .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      border:0;
+    }
+
+    @media (max-width:640px){
+      .csb-aurora-embed .foot{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .csb-aurora-embed .brand-block{
+        width:100%;
+        justify-content:flex-start;
+      }
+      .csb-aurora-embed .embed-tools{
+        width:100%;
+        align-items:flex-start;
+      }
+      .csb-aurora-embed .embed-wrap{
+        max-width:none;
+      }
+      .csb-aurora-embed .embed-label,
+      .csb-aurora-embed .embed-status{
+        text-align:left;
+      }
+    }
+
+    @media (max-width:480px){
+      .csb-aurora-embed .row{
+        grid-template-columns:32px minmax(0,1.2fr) minmax(0,0.9fr);
+        padding:7px 8px;
+      }
+      .csb-aurora-embed .head{ padding:12px 12px 10px; }
+      .csb-aurora-embed .table{ padding:8px 8px; }
+    }
+  </style>
+
+  <header class="head">
+    <h2 id="csb-aurora-title" class="title">
+      Aurora Odds Index: Best U.S. States to See the Northern Lights
+    </h2>
+    <p class="sub">
+      Ranked by Aurora Viewing Chance (%) based on latitude, clear nights, sky darkness and humidity.
+    </p>
+    <p class="meta">
+      Higher Aurora Viewing Chance indicates more favorable long-term conditions for aurora visibility, not a nightly forecast.
+    </p>
+  </header>
+
+  <div class="table" role="table" aria-label="Aurora Odds Index, top 20 U.S. states to see the northern lights">
+    <!-- Header row -->
+    <div class="row row--head" role="row">
+      <div class="cell cell-head" role="columnheader">Rank</div>
+      <div class="cell cell-head" role="columnheader">State &amp; Capital</div>
+      <div class="cell cell-head" role="columnheader">Aurora Viewing Chance</div>
+    </div>
+
+    <!-- 1. Arizona -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">1</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Arizona</span>
+        <span class="state-meta">Capital: Phoenix &bull; Clear Days: 193 &bull; Darkness Score: 75</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 60 percent">60%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.60);"></span>
+          </div>
+          <span class="pill-label">Very strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Nevada -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">2</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Nevada</span>
+        <span class="state-meta">Capital: Carson City &bull; Clear Days: 158 &bull; Darkness Score: 74</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 59.42 percent">59.42%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5942);"></span>
+          </div>
+          <span class="pill-label">Very strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. New Mexico -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">3</div>
+      <div class="cell" role="cell">
+        <span class="state-main">New Mexico</span>
+        <span class="state-meta">Capital: Santa Fe &bull; Clear Days: 167 &bull; Darkness Score: 82</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 56.91 percent">56.91%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5691);"></span>
+          </div>
+          <span class="pill-label">Very strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Alaska -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">4</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Alaska</span>
+        <span class="state-meta">Capital: Juneau &bull; Clear Days: 61 &bull; Darkness Score: 95</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 55.64 percent">55.64%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5564);"></span>
+          </div>
+          <span class="pill-label">Very strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Utah -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">5</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Utah</span>
+        <span class="state-meta">Capital: Salt Lake City &bull; Clear Days: 125 &bull; Darkness Score: 80</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 52.58 percent">52.58%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5258);"></span>
+          </div>
+          <span class="pill-label">Strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Idaho -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">6</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Idaho</span>
+        <span class="state-meta">Capital: Boise &bull; Clear Days: 120 &bull; Darkness Score: 84</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 51.84 percent">51.84%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5184);"></span>
+          </div>
+          <span class="pill-label">Strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Colorado -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">7</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Colorado</span>
+        <span class="state-meta">Capital: Denver &bull; Clear Days: 136 &bull; Darkness Score: 72</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 51.11 percent">51.11%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5111);"></span>
+          </div>
+          <span class="pill-label">Strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Wyoming -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">8</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Wyoming</span>
+        <span class="state-meta">Capital: Cheyenne &bull; Clear Days: 114 &bull; Darkness Score: 86</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 50.79 percent">50.79%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.5079);"></span>
+          </div>
+          <span class="pill-label">Strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Montana -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">9</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Montana</span>
+        <span class="state-meta">Capital: Helena &bull; Clear Days: 82 &bull; Darkness Score: 88</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 49.83 percent">49.83%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4983);"></span>
+          </div>
+          <span class="pill-label">Strong</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. South Dakota -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">10</div>
+      <div class="cell" role="cell">
+        <span class="state-main">South Dakota</span>
+        <span class="state-meta">Capital: Pierre &bull; Clear Days: 104 &bull; Darkness Score: 78</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 47.41 percent">47.41%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4741);"></span>
+          </div>
+          <span class="pill-label">High</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. North Dakota -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">11</div>
+      <div class="cell" role="cell">
+        <span class="state-main">North Dakota</span>
+        <span class="state-meta">Capital: Bismarck &bull; Clear Days: 93 &bull; Darkness Score: 78</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 46.41 percent">46.41%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4641);"></span>
+          </div>
+          <span class="pill-label">High</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. Maine -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">12</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Maine</span>
+        <span class="state-meta">Capital: Augusta &bull; Clear Days: 101 &bull; Darkness Score: 68</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 43.42 percent">43.42%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4342);"></span>
+          </div>
+          <span class="pill-label">High</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. Nebraska -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">13</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Nebraska</span>
+        <span class="state-meta">Capital: Lincoln &bull; Clear Days: 117 &bull; Darkness Score: 62</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 43.41 percent">43.41%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4341);"></span>
+          </div>
+          <span class="pill-label">High</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Kansas -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">14</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Kansas</span>
+        <span class="state-meta">Capital: Topeka &bull; Clear Days: 128 &bull; Darkness Score: 60</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 43.26 percent">43.26%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4326);"></span>
+          </div>
+          <span class="pill-label">High</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. Minnesota -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">15</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Minnesota</span>
+        <span class="state-meta">Capital: Saint Paul &bull; Clear Days: 95 &bull; Darkness Score: 58</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 41.51 percent">41.51%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4151);"></span>
+          </div>
+          <span class="pill-label">High</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. Oklahoma -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">16</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Oklahoma</span>
+        <span class="state-meta">Capital: Oklahoma City &bull; Clear Days: 139 &bull; Darkness Score: 50</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 40.45 percent">40.45%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4045);"></span>
+          </div>
+          <span class="pill-label">Moderate</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. New Hampshire -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">17</div>
+      <div class="cell" role="cell">
+        <span class="state-main">New Hampshire</span>
+        <span class="state-meta">Capital: Concord &bull; Clear Days: 90 &bull; Darkness Score: 63</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 40.41 percent">40.41%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4041);"></span>
+          </div>
+          <span class="pill-label">Moderate</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. Oregon -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">18</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Oregon</span>
+        <span class="state-meta">Capital: Salem &bull; Clear Days: 68 &bull; Darkness Score: 70</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 40.04 percent">40.04%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.4004);"></span>
+          </div>
+          <span class="pill-label">Moderate</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. Iowa -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">19</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Iowa</span>
+        <span class="state-meta">Capital: Des Moines &bull; Clear Days: 105 &bull; Darkness Score: 56</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 38.95 percent">38.95%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.3895);"></span>
+          </div>
+          <span class="pill-label">Moderate</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20. Missouri -->
+    <div class="row row--data" role="row" tabindex="0">
+      <div class="cell cell-rank" role="cell">20</div>
+      <div class="cell" role="cell">
+        <span class="state-main">Missouri</span>
+        <span class="state-meta">Capital: Jefferson City &bull; Clear Days: 115 &bull; Darkness Score: 54</span>
+      </div>
+      <div class="cell" role="cell">
+        <div class="chance" aria-label="Aurora Viewing Chance 38.59 percent">38.59%</div>
+        <div class="pill-wrap">
+          <div class="pill-bar" aria-hidden="true">
+            <span style="transform:scaleX(0.3859);"></span>
+          </div>
+          <span class="pill-label">Moderate</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <div class="foot-main">
+      <p>
+        <strong>Aurora Viewing Chance (%)</strong> is a long-term likelihood score based on normalized metrics for Aurora Reach (latitude), Clear Nights, Sky Darkness and Humidity. It is not a real-time space-weather forecast.
+      </p>
+    </div>
+
+    <div class="brand-block" aria-label="Aurora Odds Index by The Action Network">
+      <div class="brand-logo">
+        <img src="https://i.postimg.cc/v8v27ZVc/download.png" alt="The Action Network logo">
+      </div>
+      <div class="brand-text">
+        <span class="brand-text-title">Aurora Odds Index</span>
+        <span class="brand-text-sub">Data &amp; analysis by The Action Network</span>
+      </div>
+    </div>
+
+    <div class="embed-tools">
+      <button type="button" class="embed-btn">
+        <span class="embed-btn-icon">⧉</span>
+        <span>Copy embed code</span>
+      </button>
+      <div class="embed-wrap" hidden>
+        <label class="embed-label" for="aurora-embed-code">
+          Copy and paste this snippet to embed the Aurora Odds Index chart:
+        </label>
+        <textarea id="aurora-embed-code" class="embed-code embed-code-js" readonly>
+<!-- Aurora Odds Index embed -->
+<iframe src="https://www.actionnetwork.com/tools/aurora-odds-index-embed" title="Aurora Odds Index — Best States to See the Northern Lights" loading="lazy" style="border:0;width:100%;max-width:860px;height:520px;border-radius:12px;overflow:hidden;"></iframe>
+        </textarea>
+        <div class="embed-status embed-status-js" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </footer>
+
+  <span class="sr-only" aria-hidden="false">
+    Aurora Odds Index embed showing ranked U.S. states with higher percentages indicating better long-term chances to see the northern lights.
+  </span>
+
+  <script>
+    (function(){
+      var root = document.querySelector('.csb-aurora-embed');
+      if(!root) return;
+
+      var btn = root.querySelector('.embed-btn');
+      var wrap = root.querySelector('.embed-wrap');
+      var ta = root.querySelector('.embed-code-js');
+      var status = root.querySelector('.embed-status-js');
+
+      if(!btn || !wrap || !ta) return;
+
+      btn.addEventListener('click', function(){
+        if(wrap.hidden){
+          wrap.hidden = false;
+        }
+        ta.focus();
+        ta.select();
+        var copied = false;
+        try {
+          copied = document.execCommand('copy');
+        } catch(e) {
+          copied = false;
+        }
+        if(status){
+          status.textContent = copied
+            ? 'Embed code copied to your clipboard.'
+            : 'Embed code selected. Press Ctrl+C (Cmd+C on Mac) to copy.';
+        }
+      });
+    })();
+  </script>
+
+</section>
+
+</body>
+</html>
